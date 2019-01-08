@@ -34,7 +34,25 @@ class Listing < ApplicationRecord
   def assign_values
     case self.source
     when "streeteasy"
-      puts "doin' that streeteasy thing"
+      self.streeteasy_values
+    else
+      puts "**************************************************"
+      puts "Could Not Assign Values, No Valid Source Indicated"
+      puts "**************************************************"
     end
+  end
+
+  def streeteasy_values
+    self.street_address_one = parsed_page.css("a.incognito").first.text
+    self.city = parsed_page.css("div.backend_data.BuildingInfo-item > span.Text").first.text.gsub(/\n|,/,"").split(" ")[0]
+    self.state = parsed_page.css("div.backend_data.BuildingInfo-item > span.Text").first.text.gsub(/\n|,/,"").split(" ")[1]
+    self.zip_code = parsed_page.css("div.backend_data.BuildingInfo-item > span.Text").first.text.gsub(/\n|,/,"").split(" ")[-1].to_i
+    self.price = parsed_page.css("div.price").first.children[2].text.gsub(/\ |\n|\$|\,/, "").to_i
+    self.no_fee = !parsed_page.css("div.status.nofee").empty?
+    self.num_beds = parsed_page.css("span.detail_cell").find {|el| el.text.include?("bed")}.text.split(" ").first.to_i
+    self.num_bath = parsed_page.css("span.detail_cell").find {|el| el.text.include?("bath")}.text.split(" ").first.to_i
+    self.description = parsed_page.css("div.Description-block.jsDescriptionExpanded").inner_html
+    self.neighborhood = parsed_page.css("span.Text").find {|el| el.text.include?("Rental Building in ")}.children.find {|el| el.name == "a"}.text
+    self.save
   end
 end
