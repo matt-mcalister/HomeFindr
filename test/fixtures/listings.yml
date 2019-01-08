@@ -1,0 +1,41 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  url: MyString
+  street_address: MyString
+  unit: MyString
+  city: MyString
+  state: MyString
+  zip_code: 1
+  price: 1
+  no_fee: false
+  num_beds: 1
+  num_bath: 1.5
+  laundry_in_unit: false
+  laundry_in_building: false
+  central_air: false
+  description: MyText
+  has_dishwasher: false
+  neighborhood: MyString
+  package_handling: false
+  guarantors_accepted: false
+
+two:
+  url: MyString
+  street_address: MyString
+  unit: MyString
+  city: MyString
+  state: MyString
+  zip_code: 1
+  price: 1
+  no_fee: false
+  num_beds: 1
+  num_bath: 1.5
+  laundry_in_unit: false
+  laundry_in_building: false
+  central_air: false
+  description: MyText
+  has_dishwasher: false
+  neighborhood: MyString
+  package_handling: false
+  guarantors_accepted: false
