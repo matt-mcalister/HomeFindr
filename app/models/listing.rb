@@ -1,5 +1,5 @@
 class Listing < ApplicationRecord
-
+  belongs_to :hunt
 
   # FORMATTING
   def formatted_address
