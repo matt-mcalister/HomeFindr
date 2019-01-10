@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  before_action :authenticate_dog!, except: [:signup, :login, :landing]
+  before_action :authenticate_user!, except: [:sign_in, :sign_out, :password, :confirmation, :registration, :edit]
   before_action :configure_permitted_parameters, if: :devise_controller?
   protect_from_forgery with: :exception
 
