@@ -1,7 +1,8 @@
 class HomeController < ApplicationController
   def landing
     if current_user
-      redirect_to listings_path
+      @listings = current_user.listings
+      render :home
     else
       render :landing
     end
