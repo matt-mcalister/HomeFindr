@@ -4,14 +4,18 @@ class ListingsController < ApplicationController
     @listings = Listing.all
   end
 
+  def search
+    listing = Listing.find_by(url: params[:url])
+    render json: {listing: listing}
+  end
+
 
   def create
-    byebug
     listing = Listing.find_or_initialize_by(url: listing_params[:url])
     if listing.valid?
       listing.save
       if listing.update(listing_params)
-        render json: {success: true}
+        render json: {listing: listing}
       else
         render json: {errors: listing.errors}
       end
@@ -22,6 +26,7 @@ class ListingsController < ApplicationController
 
 
   def destroy
+    Listing.find(params[:id]).destroy
   end
 
   private
@@ -44,6 +49,7 @@ class ListingsController < ApplicationController
                                     :package_handling,
                                     :elevator,
                                     :gym,
-                                    :url)
+                                    :url,
+                                    :notes)
   end
 end

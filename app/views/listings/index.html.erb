@@ -1,4 +1,4 @@
 <h1>Listings</h1>
 <% @listings.each do |l| %>
-  <%= link_to l.formatted_address, l %><br />
+  <%= link_to l.formatted_address, l.url %><br />
 <% end %>
