@@ -1,8 +1,7 @@
 class HomeController < ApplicationController
   def landing
     if current_user
-      @woofs = Woof.all
-      render :home
+      redirect_to listings_path
     else
       render :landing
     end
