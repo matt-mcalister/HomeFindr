@@ -1,66 +1,49 @@
 class ListingsController < ApplicationController
+  skip_before_action :verify_authenticity_token
   def index
     @listings = Listing.all
   end
 
-  def show
-    @listing = Listing.find(params[:id])
-  end
-
-
-  def new
-    @listing = Listing.new
-  end
-
 
   def create
-    @listing = Listing.new(listing_params)
-    if @listing.valid?
-      @listing.save
-      @listing.assign_source
-      @listing.assign_values
-      redirect_to edit_listing_path(@listing)
+    byebug
+    listing = Listing.find_or_initialize_by(url: listing_params[:url])
+    if listing.valid?
+      listing.save
+      if listing.update(listing_params)
+        render json: {success: true}
+      else
+        render json: {errors: listing.errors}
+      end
     else
-      render :new
+      render json: {errors: listing.errors}
     end
   end
 
-  def edit
-    @listing = Listing.find(params[:id])
-  end
-
-  def update
-    @listing = Listing.find(params[:id])
-    if @listing.update(listing_params)
-      redirect_to listing_path(@listing)
-    else
-      render :edit
-    end
-  end
 
   def destroy
   end
 
   private
   def listing_params
-    params.require(:listing).permit(:url,
-                                    :street_address_one,
-                                    :street_address_two,
+    params.require(:listing).permit(:street_address,
                                     :city,
                                     :state,
                                     :zip_code,
+                                    :neighborhood,
                                     :price,
-                                    :no_fee,
                                     :num_beds,
                                     :num_bath,
+                                    :no_fee,
+                                    :dishwasher,
+                                    :guarantors_accepted,
+                                    :outdoor_space,
                                     :laundry_in_unit,
                                     :laundry_in_building,
-                                    :central_air,
-                                    :description,
-                                    :has_dishwasher,
-                                    :neighborhood,
+                                    :doorman,
                                     :package_handling,
-                                    :guarantors_accepted,
-                                    :source)
+                                    :elevator,
+                                    :gym,
+                                    :url)
   end
 end
