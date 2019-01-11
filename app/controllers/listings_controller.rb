@@ -1,26 +1,37 @@
 class ListingsController < ApplicationController
-  skip_before_action :verify_authenticity_token
+  skip_before_action :verify_authenticity_token, :authenticate_user!
   def index
     @listings = Listing.all
   end
 
   def search
-    listing = Listing.find_by(url: params[:url])
-    render json: {listing: listing}
+    user = User.find_by(email: params[:email])
+    if !!user
+      listing = user.listings.find {|l| l.url == params[:url]}
+      render json: {listing: listing}
+    else
+      render json: {errors: ["You must create an account before adding favorites!"]}
+    end
   end
 
 
   def create
-    listing = Listing.find_or_initialize_by(url: listing_params[:url])
-    if listing.valid?
-      listing.save
-      if listing.update(listing_params)
-        render json: {listing: listing}
+    user = User.find_by(email: params[:email])
+    if !!user
+      listing = Listing.find_or_initialize_by(url: listing_params[:url])
+      listing.hunt = user.most_recent_hunt
+      if listing.valid?
+        listing.save
+        if listing.update(listing_params)
+          render json: {listing: listing}
+        else
+          render json: {errors: listing.errors}
+        end
       else
         render json: {errors: listing.errors}
       end
     else
-      render json: {errors: listing.errors}
+      render json: {errors: ["You must create an account before adding favorites!"]}
     end
   end
 
