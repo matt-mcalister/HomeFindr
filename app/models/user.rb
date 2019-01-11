@@ -7,7 +7,8 @@ class User < ApplicationRecord
     {
       id: self.id,
       email: self.email,
-      hunts: self.hunts.map(&:to_json)
+      hunts: self.hunts.map(&:to_json),
+      listings: self.listings.map(&:to_json)
     }
   end
 

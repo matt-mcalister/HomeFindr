@@ -6,8 +6,7 @@ class Hunt < ApplicationRecord
   def to_json
     {
       id: self.id,
-      name: self.name,
-      listings: self.listings.map(&:to_json)
+      name: self.name
     }
   end
 end

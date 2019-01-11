@@ -4,10 +4,6 @@ class ListingsController < ApplicationController
     @listings = Listing.all
   end
 
-  def get_user_info
-    user = User.find_by(email: params[:email])
-  end
-
   def search
     user = User.find_by(email: params[:email])
     if !!user
@@ -23,7 +19,11 @@ class ListingsController < ApplicationController
     user = User.find_by(email: params[:email])
     if !!user
       listing = Listing.find_or_initialize_by(url: listing_params[:url])
-      listing.hunt = user.most_recent_hunt
+      if params[:hunt_id] == "Create New Hunt"
+        listing.hunt = Hunt.create(name: "My New Hunt")
+      else
+        listing.hunt_id = params[:hunt_id]
+      end
       if listing.valid?
         listing.save
         if listing.update(listing_params)

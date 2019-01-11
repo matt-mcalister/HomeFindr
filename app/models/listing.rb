@@ -1,7 +1,15 @@
 class Listing < ApplicationRecord
   belongs_to :hunt
 
-  # FORMATTING
+  # def hunt_id=(arg)
+  #   if arg == "Create New Hunt"
+  #     hunt = Hunt.create(name: "My New Hunt")
+  #     self.update(hunt_id: hunt.id)
+  #   else
+  #     self.update(hunt_id: arg)
+  #   end
+  # end
+
   def formatted_address
     "#{self.street_address}, #{self.city}, #{self.state} #{self.zip_code}"
   end
