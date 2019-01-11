@@ -4,6 +4,10 @@ class ListingsController < ApplicationController
     @listings = Listing.all
   end
 
+  def get_user_info
+    user = User.find_by(email: params[:email])
+  end
+
   def search
     user = User.find_by(email: params[:email])
     if !!user

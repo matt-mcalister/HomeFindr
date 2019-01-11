@@ -3,14 +3,12 @@ class User < ApplicationRecord
   has_many :hunts, through: :user_hunts
   has_many :listings, through: :hunts
 
-  def most_recent_hunt
-    if hunts.empty?
-      h = Hunt.create(name: "My Awesome Hunt")
-      hunts << h
-      h
-    else
-      hunts.last
-    end
+  def to_json
+    {
+      id: self.id,
+      email: self.email,
+      hunts: self.hunts.map(&:to_json)
+    }
   end
 
   # Include default devise modules. Others available are:
