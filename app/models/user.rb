@@ -13,8 +13,8 @@ class User < ApplicationRecord
   end
 
   def hunts_with_listings
-    self.hunts.map do |h|
-      {
+    self.hunts.each_with_object({}) do |h, hash|
+      hash[h.id] = {
         id: h.id,
         name: h.name,
         created_at: h.created_at,

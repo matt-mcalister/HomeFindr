@@ -3,7 +3,7 @@ class HomePage extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      selectedHuntId: props.hunts[props.hunts.length-1].id,
+      selectedHuntId: props.selectedHuntId,
       hunts: props.hunts,
       filterBy: {},
       sortBy: "all"
@@ -19,7 +19,7 @@ class HomePage extends React.Component {
   }
 
   filtered(){
-    return {}
+    return []
   }
 
   sorted(listings){
@@ -27,7 +27,7 @@ class HomePage extends React.Component {
   }
 
   render() {
-    console.log(this.props);
+    console.log(this.state);
     return (
       <div className="page-content home">
         <HuntSelector selectedHuntId={this.state.selectedHuntId} hunts={this.state.hunts} selectHunt={this.selectHunt}/>
