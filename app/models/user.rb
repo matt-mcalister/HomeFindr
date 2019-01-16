@@ -12,6 +12,18 @@ class User < ApplicationRecord
     }
   end
 
+  def hunts_with_listings
+    self.hunts.map do |h|
+      {
+        id: h.id,
+        name: h.name,
+        created_at: h.created_at,
+        updated_at: h.updated_at,
+        listings: h.listings
+      }
+    end
+  end
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,

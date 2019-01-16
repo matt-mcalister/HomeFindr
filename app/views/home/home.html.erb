@@ -1,3 +1,1 @@
-<% @listings.each do |l| %>
-  <%= link_to l.formatted_address, l.url %><br />
-<% end %>
+<%= react_component("HomePage", {hunts: @hunts}) %>
