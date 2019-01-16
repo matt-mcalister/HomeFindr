@@ -13,3 +13,36 @@
  *= require_tree .
  *= require_self
  */
+
+ body {
+   margin: 0;
+ }
+#nav-bar {
+  background-color: #032765;
+  color: white;
+  min-height: 100px;
+  height: 8vh;
+  max-height: 300px;
+  display: flex;
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+#auth-button {
+  width: 100px;
+  height: 50px;
+  border-radius: 2px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#auth-button > a {
+  color: #032765;
+  text-decoration: none;
+}
