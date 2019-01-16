@@ -18,12 +18,20 @@ class HomePage extends React.Component {
     })
   }
 
+  filtered(){
+    return {}
+  }
+
+  sorted(listings){
+    return listings
+  }
+
   render() {
     console.log(this.props);
     return (
       <div className="page-content home">
         <HuntSelector selectedHuntId={this.state.selectedHuntId} hunts={this.state.hunts} selectHunt={this.selectHunt}/>
-
+        <ListingsList listings={this.sorted(this.filtered())}/>
       </div>
     )
   }
