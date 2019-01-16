@@ -19,7 +19,8 @@ class HomePage extends React.Component {
   }
 
   filtered(){
-    return []
+    let listings = this.state.hunts[this.state.selectedHuntId].listings
+    return listings
   }
 
   sorted(listings){
