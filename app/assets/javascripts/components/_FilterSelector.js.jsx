@@ -19,10 +19,10 @@ const FilterSelector = ({ filterBy, setFilter }) => {
     <div id="filter-checks">
     { filterAttrs.map(attr => {
       return (
-        <React.Fragment key={attr}>
+        <div key={attr}>
           <label htmlFor={attr}>{labels[attr]}</label>
           <input type="checkbox" name={attr} checked={filterBy[attr]} onChange={e => setFilter(attr)}/>
-        </React.Fragment>
+        </div>
       )
     }) }
     </div>
