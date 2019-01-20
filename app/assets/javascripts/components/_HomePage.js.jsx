@@ -6,17 +6,16 @@ class HomePage extends React.Component {
       selectedHuntId: props.selectedHuntId,
       hunts: props.hunts,
       filterBy: {
-        all: true,
-        no_fee: true,
-        dishwasher: true,
-        guarantors_accepted: true,
-        outdoor_space: true,
-        laundry_in_unit: true,
-        laundry_in_building: true,
-        doorman: true,
-        package_handling: true,
-        elevator: true,
-        gym: true,
+        no_fee: false,
+        dishwasher: false,
+        guarantors_accepted: false,
+        outdoor_space: false,
+        laundry_in_unit: false,
+        laundry_in_building: false,
+        doorman: false,
+        package_handling: false,
+        elevator: false,
+        gym: false,
       },
       sortBy: "all"
     }
@@ -33,47 +32,30 @@ class HomePage extends React.Component {
 
   filtered(){
     let listings = this.state.hunts[this.state.selectedHuntId].listings
-    return listings
+    console.log(this.state.filterBy);
+    console.log("PRE FILTERED: ", listings);
+    let attrs = Object.keys(this.state.filterBy)
+    return listings.filter(l => {
+      return attrs.every(attr => !this.state.filterBy[attr] || l[attr])
+    })
   }
 
   sorted(listings){
+    console.log("POST FILTERED: ", listings)
     return listings
   }
 
   setFilter(attr){
-    if (attr === "all") {
-      this.setState({
-        filterBy: {
-          all: true,
-          no_fee: true,
-          dishwasher: true,
-          guarantors_accepted: true,
-          outdoor_space: true,
-          laundry_in_unit: true,
-          laundry_in_building: true,
-          doorman: true,
-          package_handling: true,
-          elevator: true,
-          gym: true,
-        }
-      })
-    } else {
       let filterBy = {
         ...this.state.filterBy,
-        all: false,
         [attr]: !this.state.filterBy[attr]
-      }
-      if (Object.keys(filterBy).every(attr => attr === "all" || filterBy[attr])) {
-        filterBy.all = true
       }
       this.setState({
         filterBy: filterBy
       })
-    }
   }
 
   render() {
-    console.log(this.state);
     return (
       <div className="page-content home">
         <HuntSelector selectedHuntId={this.state.selectedHuntId} hunts={this.state.hunts} selectHunt={this.selectHunt}/>
