@@ -17,6 +17,7 @@ const ListingItem = ({ listing }) => {
       {listing.elevator && <li>Elevator</li>}
       {listing.gym && <li>Gym</li>}
       </ul>
+      <p>NOTES: {listing.notes}</p>
     </div>
   )
 }
