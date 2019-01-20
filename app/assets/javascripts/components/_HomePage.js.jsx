@@ -7,16 +7,16 @@ class HomePage extends React.Component {
       hunts: props.hunts,
       filterBy: {
         all: true,
-        no_fee: false,
-        dishwasher: false,
-        guarantors_accepted: false,
-        outdoor_space: false,
-        laundry_in_unit: false,
-        laundry_in_building: false,
-        doorman: false,
-        package_handling: false,
-        elevator: false,
-        gym: false,
+        no_fee: true,
+        dishwasher: true,
+        guarantors_accepted: true,
+        outdoor_space: true,
+        laundry_in_unit: true,
+        laundry_in_building: true,
+        doorman: true,
+        package_handling: true,
+        elevator: true,
+        gym: true,
       },
       sortBy: "all"
     }
@@ -41,7 +41,35 @@ class HomePage extends React.Component {
   }
 
   setFilter(attr){
-    console.log(attr)
+    if (attr === "all") {
+      this.setState({
+        filterBy: {
+          all: true,
+          no_fee: true,
+          dishwasher: true,
+          guarantors_accepted: true,
+          outdoor_space: true,
+          laundry_in_unit: true,
+          laundry_in_building: true,
+          doorman: true,
+          package_handling: true,
+          elevator: true,
+          gym: true,
+        }
+      })
+    } else {
+      let filterBy = {
+        ...this.state.filterBy,
+        all: false,
+        [attr]: !this.state.filterBy[attr]
+      }
+      if (Object.keys(filterBy).every(attr => attr === "all" || filterBy[attr])) {
+        filterBy.all = true
+      }
+      this.setState({
+        filterBy: filterBy
+      })
+    }
   }
 
   render() {
