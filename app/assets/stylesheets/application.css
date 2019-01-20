@@ -46,3 +46,18 @@
   color: #032765;
   text-decoration: none;
 }
+
+.home {
+  padding: 15px;
+}
+
+
+#filter-checks {
+  margin: 10px 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#filter-checks > div {
+  margin-right: 20px;
+}

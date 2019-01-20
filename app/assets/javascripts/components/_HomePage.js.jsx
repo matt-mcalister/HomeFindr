@@ -58,7 +58,9 @@ class HomePage extends React.Component {
   render() {
     return (
       <div className="page-content home">
-        <HuntSelector selectedHuntId={this.state.selectedHuntId} hunts={this.state.hunts} selectHunt={this.selectHunt}/>
+        <div className="dropdowns">
+          Hunt: <HuntSelector selectedHuntId={this.state.selectedHuntId} hunts={this.state.hunts} selectHunt={this.selectHunt}/>
+        </div>
         <FilterSelector filterBy={this.state.filterBy} setFilter={this.setFilter}/>
         <ListingsList listings={this.sorted(this.filtered())}/>
       </div>
