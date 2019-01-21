@@ -2,8 +2,11 @@ class EditHunt extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      newUserEmail: ""
+      newUserEmail: "",
+      error: false,
     }
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   handleChange(e){
@@ -15,6 +18,9 @@ class EditHunt extends React.Component {
   handleSubmit(e){
     e.preventDefault()
     console.log(this.state.newUserEmail);
+    this.setState({
+      error: true
+    })
   }
 
   render(){
@@ -24,6 +30,7 @@ class EditHunt extends React.Component {
         <h2>{name}</h2>
         {users.map(u => <p key={u.id}>{u.username}</p>)}
         <form onSubmit={this.handleSubmit}>
+        {this.state.error && <p style={{color:"red", marginTop: 0}}>User Not Found</p>}
           <label htmlFor="newUserEmail">Add User:</label>
           <input type="text" name="newUserEmail" value={this.state.newUserEmail} onChange={this.handleChange} />
           <input type="submit" />
