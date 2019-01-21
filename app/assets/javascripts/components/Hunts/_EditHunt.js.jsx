@@ -56,7 +56,7 @@ class EditHunt extends React.Component {
     return (
       <div className="box hunt">
         <div>
-          <h2>{name}</h2>
+          <a href={"/?hunt=" + name}><h2>{name}</h2></a>
           {this.state.users.map(u => <p key={u.id}>{u.username}</p>)}
           <form onSubmit={this.handleSubmit}>
           {this.state.error && <p style={{color:"red", marginTop: 0}}>User Not Found</p>}

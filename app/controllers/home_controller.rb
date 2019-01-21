@@ -5,7 +5,11 @@ class HomeController < ApplicationController
       if !current_user.hunts.last
         redirect_to hunts_path
       else
-        @selected_hunt_id = current_user.hunts.last.id
+        if params[:hunt] && hunt = Hunt.find_by(name: params[:hunt])
+          @selected_hunt_id = hunt.id
+        else
+          @selected_hunt_id = current_user.hunts.last
+        end
         render :home
       end
     else
