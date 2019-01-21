@@ -19,7 +19,7 @@ class EditHunt extends React.Component {
 
   handleSubmit(e){
     e.preventDefault()
-    fetch(BASE_URL + "/hunts/add_user", {
+    fetch("/hunts/add_user", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

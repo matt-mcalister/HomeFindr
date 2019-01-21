@@ -20,7 +20,7 @@ class HuntsPage extends React.Component {
   handleSubmit(e){
     e.preventDefault()
     console.log(this.state.newHunt);
-    fetch(BASE_URL + "/hunts", {
+    fetch("/hunts", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -47,7 +47,7 @@ class HuntsPage extends React.Component {
   }
 
   handleDelete(id){
-    fetch(BASE_URL + `/hunts/${id}`, {
+    fetch(`/hunts/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json"
