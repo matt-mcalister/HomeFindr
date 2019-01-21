@@ -1,6 +1,6 @@
 const ListingItem = ({ listing }) => {
   return (
-    <div className="listing-item">
+    <div className="box">
       <a href={listing.url}><h3>{listing.street_address}</h3></a>
       <h3>{listing.city}, {listing.state} {listing.zip_code}</h3>
       <h4>{listing.neighborhood} | ${listing.price} </h4>

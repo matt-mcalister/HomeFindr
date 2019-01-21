@@ -1,6 +1,6 @@
 const ListingsList = ({ listings }) => {
   return (
-    <div className="listings-list">
+    <div className="box-list">
       { listings.map(l => (<ListingItem listing={l} key={l.id}/>))}
     </div>
   )

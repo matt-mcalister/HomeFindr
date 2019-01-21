@@ -49,7 +49,7 @@ class EditHunt extends React.Component {
   render(){
     let { name } = this.props.hunt
     return (
-      <div className="edit-hunt">
+      <div className="box">
         <h2>{name}</h2>
         {this.state.users.map(u => <p key={u.id}>{u.username}</p>)}
         <form onSubmit={this.handleSubmit}>
