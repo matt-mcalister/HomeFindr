@@ -95,15 +95,12 @@ GEM
     ffi (1.10.0)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
-    httparty (0.16.2)
-      multi_xml (>= 0.5.2)
     i18n (1.5.1)
       concurrent-ruby (~> 1.0)
     io-like (0.3.0)
     jbuilder (2.8.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
-    json (2.1.0)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -122,7 +119,6 @@ GEM
     minitest (5.11.3)
     msgpack (1.2.6)
     multi_json (1.13.1)
-    multi_xml (0.6.0)
     nio4r (2.3.1)
     nokogiri (1.10.0)
       mini_portile2 (~> 2.4.0)
@@ -234,11 +230,8 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   devise
   dotenv-rails
-  httparty
   jbuilder (~> 2.5)
-  json
   listen (>= 3.0.5, < 3.2)
-  nokogiri
   puma (~> 3.11)
   rack-cors
   rails (~> 5.2.1)
@@ -254,7 +247,7 @@ DEPENDENCIES
   web-console (>= 3.3.0)
 
 RUBY VERSION
-   ruby 2.3.3p222
+   ruby 2.5.0p0
 
 BUNDLED WITH
-   1.16.1
+   1.16.2
