@@ -1,7 +1,8 @@
 const HuntsPage = ({ hunts }) => {
+  let huntIds = Object.keys(hunts)
   return (
     <div className="page-content hunts">
-      { hunts.map(h => <EditHunt key={h.id} hunt={h}/>)}
+      { huntIds.map(id => <EditHunt key={id} hunt={hunts[id]}/>)}
     </div>
   )
 }

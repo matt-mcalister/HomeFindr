@@ -24,6 +24,18 @@ class User < ApplicationRecord
     end
   end
 
+  def hunts_with_users
+    self.hunts.each_with_object({}) do |h, hash|
+      hash[h.id] = {
+        id: h.id,
+        name: h.name,
+        created_at: h.created_at,
+        updated_at: h.updated_at,
+        users: h.users
+      }
+    end
+  end
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,

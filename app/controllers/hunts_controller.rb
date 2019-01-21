@@ -1,7 +1,7 @@
 class HuntsController < ApplicationController
 
   def index
-    @hunts = current_user.hunts
+    @hunts = current_user.hunts_with_users
   end
 
   def create
