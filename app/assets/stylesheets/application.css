@@ -32,7 +32,11 @@
   padding-left: 10px;
 }
 
-#auth-button {
+#nav-left {
+  display:flex;
+}
+
+.auth-button {
   width: 100px;
   height: 50px;
   border-radius: 2px;
@@ -40,9 +44,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 5px;
 }
 
-#auth-button > a {
+.auth-button > a {
   color: #032765;
   text-decoration: none;
 }

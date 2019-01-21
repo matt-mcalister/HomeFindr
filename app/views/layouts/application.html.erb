@@ -12,13 +12,20 @@
   <body>
     <div id="nav-bar">
       <h1>HomeFindr</h1>
-        <div id="auth-button">
+      <div id="nav-left">
         <% if current_user %>
-          <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+          <div class="auth-button">
+            <%= link_to "Manage Hunts", hunts_path %>
+          </div>
+          <div class="auth-button">
+            <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+          </div>
         <% else %>
-          <%= link_to "Login", new_user_session_path %>
+          <div class="auth-button">
+            <%= link_to "Login", new_user_session_path %>
+          </div>
         <% end %>
-        </div>
+      </div>
     </div>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
