@@ -16,11 +16,14 @@ class HuntsController < ApplicationController
   end
 
   def create
-    byebug
-  end
-
-  def update
-    byebug
+    hunt = Hunt.new(name: params[:hunt][:name])
+    if hunt.valid? && User.find(params[:user_id])
+      hunt.save
+      UserHunt.create(hunt_id: hunt.id, user_id: params[:user_id])
+      render json: {hunts: current_user.hunts_with_users}
+    else
+      render json: {errors: hunt.errors.full_messages}
+    end
   end
 
   def destroy
