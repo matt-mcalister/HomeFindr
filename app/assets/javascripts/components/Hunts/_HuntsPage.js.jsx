@@ -1,11 +1,7 @@
 const HuntsPage = ({ hunts }) => {
   return (
     <div className="page-content hunts">
-      // make new hunt
-      // manage each hunt
-        // add/delete users
-        // change name
-        // delete hunt
+      { hunts.map(h => <EditHunt key={h.id} hunt={h}/>)}
     </div>
   )
 }
