@@ -33,7 +33,6 @@ class HomePage extends React.Component {
   filtered(){
     let listings = this.state.hunts[this.state.selectedHuntId].listings
     console.log(this.state.filterBy);
-    console.log("PRE FILTERED: ", listings);
     let attrs = Object.keys(this.state.filterBy)
     return listings.filter(l => {
       return attrs.every(attr => !this.state.filterBy[attr] || l[attr])
@@ -41,7 +40,6 @@ class HomePage extends React.Component {
   }
 
   sorted(listings){
-    console.log("POST FILTERED: ", listings)
     return listings
   }
 

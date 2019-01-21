@@ -17,3 +17,4 @@
 //= require react_ujs
 //= require components
 //= require_tree .
+const BASE_URL = "http://localhost:3000"

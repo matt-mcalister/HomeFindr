@@ -17,6 +17,7 @@ class HuntsPage extends React.Component {
 
   handleSubmit(e){
     e.preventDefault()
+    console.log(BASE_URL);
     console.log(this.state.newHunt);
   }
 
