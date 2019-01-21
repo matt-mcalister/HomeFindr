@@ -8,6 +8,7 @@ class HuntsPage extends React.Component {
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleDelete = this.handleDelete.bind(this)
   }
 
   handleChange(e){
@@ -45,6 +46,10 @@ class HuntsPage extends React.Component {
       })
   }
 
+  handleDelete(id){
+    console.log(id);
+  }
+
   render(){
     let huntIds = Object.keys(this.state.hunts)
     return (
@@ -56,7 +61,7 @@ class HuntsPage extends React.Component {
           <input type="submit" />
         </form>
         <div className="box-list">
-          { huntIds.map(id => <EditHunt key={id} hunt={this.state.hunts[id]}/>)}
+          { huntIds.map(id => <EditHunt key={id} hunt={this.state.hunts[id]} handleDelete={this.handleDelete}/>)}
         </div>
       </div>
     )

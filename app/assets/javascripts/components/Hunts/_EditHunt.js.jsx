@@ -8,6 +8,7 @@ class EditHunt extends React.Component {
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleClick = this.handleClick.bind(this)
   }
 
   handleChange(e){
@@ -46,18 +47,25 @@ class EditHunt extends React.Component {
       }))
   }
 
+  handleClick(e){
+    this.props.handleDelete(this.props.hunt.id)
+  }
+
   render(){
     let { name } = this.props.hunt
     return (
-      <div className="box">
-        <h2>{name}</h2>
-        {this.state.users.map(u => <p key={u.id}>{u.username}</p>)}
-        <form onSubmit={this.handleSubmit}>
-        {this.state.error && <p style={{color:"red", marginTop: 0}}>User Not Found</p>}
-          <label htmlFor="newUserEmail">Add User:</label>
-          <input type="text" name="newUserEmail" value={this.state.newUserEmail} onChange={this.handleChange} />
-          <input type="submit" />
-        </form>
+      <div className="box hunt">
+        <div>
+          <h2>{name}</h2>
+          {this.state.users.map(u => <p key={u.id}>{u.username}</p>)}
+          <form onSubmit={this.handleSubmit}>
+          {this.state.error && <p style={{color:"red", marginTop: 0}}>User Not Found</p>}
+            <label htmlFor="newUserEmail">Add User:</label>
+            <input type="text" name="newUserEmail" value={this.state.newUserEmail} onChange={this.handleChange} />
+            <input type="submit" />
+          </form>
+        </div>
+        <button onClick={this.handleClick}>Delete Hunt</button>
       </div>
     )
   }
