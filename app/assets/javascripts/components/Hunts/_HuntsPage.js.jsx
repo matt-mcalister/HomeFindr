@@ -47,7 +47,23 @@ class HuntsPage extends React.Component {
   }
 
   handleDelete(id){
-    console.log(id);
+    fetch(BASE_URL + `/hunts/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    }).then( r => r.json())
+      .then( json => {
+        if (json.success) {
+          let hunts = {...this.state.hunts}
+          delete hunts[id]
+          this.setState({
+            hunts: hunts
+          })
+        } else {
+          alert("CANNOT DELETE")
+        }
+      })
   }
 
   render(){

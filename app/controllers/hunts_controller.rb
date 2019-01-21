@@ -27,6 +27,11 @@ class HuntsController < ApplicationController
   end
 
   def destroy
-    byebug
+    success = false
+    if hunt = Hunt.find(params[:id])
+      hunt.destroy
+      success = true
+    end
+    render json: {success: success}
   end
 end
