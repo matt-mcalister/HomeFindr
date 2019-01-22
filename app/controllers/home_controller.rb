@@ -8,7 +8,7 @@ class HomeController < ApplicationController
         if params[:hunt] && hunt = Hunt.find_by(name: params[:hunt])
           @selected_hunt_id = hunt.id
         else
-          @selected_hunt_id = current_user.hunts.last
+          @selected_hunt_id = current_user.hunts.last.id
         end
         render :home
       end
